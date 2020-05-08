@@ -33,15 +33,14 @@ namespace PackageFinder
             var result = new List<SearchResult>();
             if (dependencies != null)
             {
-                var version = ((JObject)dependencies).GetValue(packageToSearch, StringComparison.InvariantCultureIgnoreCase);
-                if (version != null)
+                foreach (var package in ((JObject)dependencies).Properties().Where(package =>
+                    package.Name.ToUpperInvariant().Contains(packageToSearch.ToUpperInvariant())))
                 {
-                    result.Add(
-                        new SearchResult
+                    result.Add(new SearchResult
                         {
                             PackageName = packageToSearch,
-                            Version = version.ToString(),
-                            Path = file,
+                            Version = package.Value.ToString(),
+                            Path = file,    
                             ProjectName = packageFileObject.ContainsKey("name") ? packageFileObject.GetValue("name").ToString() : ""
                         });
                 }
