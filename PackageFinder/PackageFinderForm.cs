@@ -15,6 +15,7 @@ namespace PackageFinder
             InitializeComponent();
         }
 
+
         private void OnWorkspaceRootFolderButtonClick(object sender, EventArgs e)
         {
             this.folderBrowserDialog1.ShowDialog();
@@ -26,7 +27,7 @@ namespace PackageFinder
         {
             if (!IsValidSearchCriteria())
             {
-                MessageBox.Show("The Search Criteria entered is invalid.", "Search Criteria");
+                MessageBox.Show(@"The Search Criteria entered is invalid.", @"Search Criteria");
                 return;
             }
             this.searchButton.Enabled = false;
