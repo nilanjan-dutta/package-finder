@@ -43,6 +43,7 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.noResultLabel = new System.Windows.Forms.Label();
+            this.pip = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.searchResultDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             // nugetRadioButton
             // 
             this.nugetRadioButton.AutoSize = true;
-            this.nugetRadioButton.Location = new System.Drawing.Point(655, 88);
+            this.nugetRadioButton.Location = new System.Drawing.Point(609, 88);
             this.nugetRadioButton.Name = "nugetRadioButton";
             this.nugetRadioButton.Size = new System.Drawing.Size(65, 21);
             this.nugetRadioButton.TabIndex = 5;
@@ -186,12 +187,24 @@
             this.noResultLabel.Text = "No matching package found !";
             this.noResultLabel.Visible = false;
             // 
+            // pip
+            // 
+            this.pip.AutoSize = true;
+            this.pip.Location = new System.Drawing.Point(694, 88);
+            this.pip.Name = "pip";
+            this.pip.Size = new System.Drawing.Size(48, 21);
+            this.pip.TabIndex = 11;
+            this.pip.TabStop = true;
+            this.pip.Text = "pip";
+            this.pip.UseVisualStyleBackColor = true;
+            // 
             // PackageFinderForm
             // 
             this.AcceptButton = this.searchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(932, 567);
+            this.Controls.Add(this.pip);
             this.Controls.Add(this.noResultLabel);
             this.Controls.Add(this.searchResultDataGridView);
             this.Controls.Add(this.searchButton);
@@ -230,6 +243,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.RadioButton pip;
     }
 }
 

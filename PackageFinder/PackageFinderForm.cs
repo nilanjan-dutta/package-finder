@@ -15,6 +15,7 @@ namespace PackageFinder
             InitializeComponent();
         }
 
+
         private void OnWorkspaceRootFolderButtonClick(object sender, EventArgs e)
         {
             this.folderBrowserDialog1.ShowDialog();
@@ -26,7 +27,7 @@ namespace PackageFinder
         {
             if (!IsValidSearchCriteria())
             {
-                MessageBox.Show("The Search Criteria entered is invalid.", "Search Criteria");
+                MessageBox.Show(@"The Search Criteria entered is invalid.", @"Search Criteria");
                 return;
             }
             this.searchButton.Enabled = false;
@@ -62,7 +63,7 @@ namespace PackageFinder
         {
             return !string.IsNullOrWhiteSpace(this.workspacePathTextBox.Text)
                 && !string.IsNullOrWhiteSpace(this.packageNameTextBox.Text)
-                && (this.npmRadioButton.Checked || this.nugetRadioButton.Checked);
+                && (this.npmRadioButton.Checked || this.nugetRadioButton.Checked || this.pip.Checked);
         }
 
         private string AssignDelegatesForSearch(string fileExtensionToSearch)
@@ -76,6 +77,11 @@ namespace PackageFinder
             {
                 this.searchPackage += SearchNugetPackage.FindNugetPackage;
                 fileExtensionToSearch = "*.csproj";
+            }
+            else if (this.pip.Checked)
+            {
+                this.searchPackage += SearchPipPackage.FindPiPPackage;
+                fileExtensionToSearch = "*requirements.txt";
             }
 
             return fileExtensionToSearch;
@@ -100,5 +106,6 @@ namespace PackageFinder
 
             return mainBranchFiles.ToList();
         }
+
     }
 }
